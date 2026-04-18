@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>ELSER — Coming Soon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Josefin+Sans:wght@100;200;300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#13161A;
+  --ink2:#1C2027;
+  --shuttle:#5C6673;
+  --shuttle-lt:#8A97A6;
+  --cream:#EEE9DF;
+  --cream-dim:#C8C1B4;
+  --gold:#B8996A;
+  --gold-lt:#D4BFA0;
+  --line:rgba(205,210,216,0.1);
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--ink);
+  color:var(--cream);
+  font-family:'Cormorant Garamond',Georgia,serif;
+  overflow-x:hidden;
+  min-height:100vh;
+}
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:.4;
+}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.6rem clamp(1.5rem,5vw,4rem);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(14px);
+  background:rgba(19,22,26,0.72);
+  animation:fadeDown .9s ease both;
+}
+.nav-brand{
+  font-family:'Josefin Sans',sans-serif;font-weight:200;
+  font-size:.88rem;letter-spacing:.55em;color:var(--cream);
+  text-transform:uppercase;
+}
+.nav-tag{
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.52rem;letter-spacing:.28em;color:var(--shuttle-lt);
+  text-transform:uppercase;
+}
+
+/* HERO */
+.hero{
+  position:relative;min-height:100vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  padding:8rem clamp(1.5rem,6vw,5rem) 5rem;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 42%,rgba(92,102,115,.2) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 40% at 80% 80%,rgba(184,153,106,.1) 0%,transparent 55%);
+}
+.hero-content{position:relative;z-index:1}
+.eyebrow{
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.55rem;letter-spacing:.44em;color:var(--gold);text-transform:uppercase;
+  margin-bottom:2.4rem;animation:fadeUp 1s .3s ease both;
+}
+.brand{
+  font-size:clamp(6rem,20vw,15rem);
+  font-weight:300;letter-spacing:.32em;line-height:.88;
+  color:var(--cream);
+  animation:fadeUp 1.1s .45s ease both;
+}
+.brand-ghost{
+  color:transparent;
+  -webkit-text-stroke:1px rgba(184,153,106,.28);
+}
+.subtitle{
+  font-size:clamp(.9rem,2vw,1.18rem);font-weight:300;font-style:italic;
+  color:var(--shuttle-lt);letter-spacing:.08em;margin-top:1.8rem;
+  animation:fadeUp 1s .6s ease both;
+}
+.ornament{
+  display:flex;align-items:center;gap:1rem;
+  margin:2.5rem auto 2.5rem;width:min(200px,55vw);
+  animation:fadeUp 1s .7s ease both;
+}
+.orn-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,153,106,.45),transparent)}
+.orn-dia{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);opacity:.7;flex-shrink:0}
+.cs-pill{
+  display:inline-block;
+  font-family:'Josefin Sans',sans-serif;font-weight:200;
+  font-size:.54rem;letter-spacing:.38em;text-transform:uppercase;
+  color:var(--shuttle-lt);border:1px solid rgba(138,151,166,.22);
+  padding:.52rem 1.8rem;margin-bottom:2.8rem;
+  position:relative;overflow:hidden;
+  animation:fadeUp 1s .8s ease both;
+}
+.cs-pill::after{
+  content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(184,153,106,.11),transparent);
+  animation:shimmer 3.5s 2s infinite;
+}
+
+/* FORM */
+.notify-wrap{animation:fadeUp 1s .95s ease both;display:flex;flex-direction:column;align-items:center}
+.notify-label{
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.54rem;letter-spacing:.26em;text-transform:uppercase;
+  color:var(--shuttle-lt);margin-bottom:1.1rem;
+}
+.form-row{
+  display:flex;width:min(420px,88vw);
+  border-bottom:1px solid rgba(205,210,216,.2);margin-bottom:.75rem;
+}
+.form-row input{
+  flex:1;background:transparent;border:none;outline:none;
+  font-family:'Cormorant Garamond',serif;font-size:.95rem;
+  font-weight:300;color:var(--cream);letter-spacing:.04em;
+  padding:.65rem 0;font-style:italic;
+}
+.form-row input::placeholder{color:rgba(205,210,216,.28)}
+.form-row button{
+  background:transparent;border:none;cursor:pointer;
+  font-family:'Josefin Sans',sans-serif;font-weight:200;
+  font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);padding:.65rem 0 .65rem 1.2rem;
+  transition:color .3s,letter-spacing .3s;
+}
+.form-row button:hover{color:var(--gold-lt);letter-spacing:.36em}
+.form-hint{
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(138,151,166,.38);
+}
+.form-success{
+  display:none;font-style:italic;font-size:.95rem;
+  color:var(--gold-lt);letter-spacing:.05em;
+  animation:fadeUp .6s ease both;
+}
+
+/* STRIP SECTION */
+.strip-section{
+  position:relative;z-index:1;
+  border-top:1px solid var(--line);
+}
+.strip-label{
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.48rem;letter-spacing:.36em;text-transform:uppercase;
+  color:var(--shuttle-lt);
+  padding:1.8rem clamp(1.5rem,5vw,4rem);opacity:.55;
+}
+.photo-strip{
+  display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;
+  padding:0 3px 3px;
+}
+.photo-strip::-webkit-scrollbar{display:none}
+.photo-card{flex-shrink:0;position:relative;overflow:hidden;cursor:pointer}
+.photo-card img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .9s cubic-bezier(.25,.46,.45,.94),filter .9s;
+  filter:saturate(.65) brightness(.84);
+}
+.photo-card:hover img{transform:scale(1.05);filter:saturate(.88) brightness(.96)}
+.photo-card-label{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:.75rem 1rem;
+  background:linear-gradient(transparent,rgba(13,16,20,.72));
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.46rem;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(240,235,225,.5);opacity:0;transition:opacity .4s;
+}
+.photo-card:hover .photo-card-label{opacity:1}
+.c-lg{width:320px;height:430px}
+.c-md{width:250px;height:430px}
+.c-sm{width:200px;height:430px}
+
+/* EDITORIAL GRID */
+.editorial{
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px;
+  margin:3px 0;
+}
+.ed-cell{position:relative;overflow:hidden}
+.ed-inner{height:290px}
+.ed-tall .ed-inner{height:583px}
+.ed-tall{grid-row:span 2}
+.ed-cell img{
+  display:block;width:100%;height:100%;object-fit:cover;
+  transition:transform .9s cubic-bezier(.25,.46,.45,.94),filter .9s;
+  filter:saturate(.6) brightness(.82);
+}
+.ed-cell:hover img{transform:scale(1.04);filter:saturate(.86) brightness(.96)}
+.ed-overlay{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:1.4rem;
+  background:linear-gradient(transparent 40%,rgba(13,16,20,.65));
+  opacity:0;transition:opacity .4s;
+}
+.ed-cell:hover .ed-overlay{opacity:1}
+.ed-title{font-size:.82rem;font-weight:300;font-style:italic;color:var(--cream-dim);letter-spacing:.06em}
+
+/* VALUES */
+.values{
+  display:flex;
+  border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+}
+.value{
+  flex:1;padding:2.5rem 1rem;
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  position:relative;
+}
+.value+.value::before{
+  content:'';position:absolute;left:0;top:22%;bottom:22%;
+  width:1px;background:var(--line);
+}
+.value-ico{width:20px;height:20px;opacity:.38}
+.value-name{
+  font-family:'Josefin Sans',sans-serif;font-weight:200;
+  font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cream-dim);
+}
+.value-desc{font-style:italic;font-size:.78rem;font-weight:300;color:var(--shuttle-lt);text-align:center}
+
+/* BOTTOM BANNER */
+.bottom-bar{position:relative;overflow:hidden;height:210px;border-top:1px solid var(--line)}
+.bottom-bar img{width:100%;height:100%;object-fit:cover;filter:saturate(.45) brightness(.5)}
+.bottom-bar-text{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.9rem;
+}
+.bottom-tagline{font-size:clamp(1.1rem,3.5vw,2rem);font-weight:300;font-style:italic;color:var(--cream);letter-spacing:.1em}
+.bottom-url{
+  font-family:'Josefin Sans',sans-serif;font-weight:200;
+  font-size:.58rem;letter-spacing:.42em;text-transform:lowercase;
+  color:var(--gold);text-decoration:none;transition:color .3s,letter-spacing .3s;
+}
+.bottom-url:hover{color:var(--gold-lt);letter-spacing:.55em}
+
+/* FOOTER */
+footer{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.4rem clamp(1.5rem,5vw,4rem);
+  border-top:1px solid var(--line);
+}
+.foot-txt{
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.48rem;letter-spacing:.24em;text-transform:uppercase;
+  color:rgba(138,151,166,.3);
+}
+.foot-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.35}
+
+/* SIDE */
+.side{
+  position:fixed;top:50%;right:clamp(.8rem,2.5vw,2rem);
+  transform:translateY(-50%) rotate(90deg);transform-origin:center;
+  font-family:'Josefin Sans',sans-serif;font-weight:100;
+  font-size:.42rem;letter-spacing:.38em;text-transform:uppercase;
+  color:rgba(138,151,166,.18);white-space:nowrap;z-index:50;
+  animation:fadeIn 2s 2s ease both;
+}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes shimmer{0%{left:-100%}100%{left:200%}}
+
+@media(max-width:768px){
+  .editorial{grid-template-columns:1fr 1fr}
+  .ed-tall{grid-row:span 1}.ed-tall .ed-inner{height:290px}
+  .values{flex-wrap:wrap}.value{flex:50%}.value+.value::before{display:none}
+  .side{display:none}
+  footer{flex-direction:column;gap:.8rem;text-align:center}
+}
+@media(max-width:480px){
+  .editorial{grid-template-columns:1fr}
+  .c-lg,.c-md,.c-sm{width:88vw;height:320px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-brand">Elser</span>
+  <span class="nav-tag">Est. 2026 &nbsp;&middot;&nbsp; Luxury Clothing</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">A new house of fabric</p>
+    <h1 class="brand">ELS<span class="brand-ghost">E</span>R</h1>
+    <p class="subtitle">Where texture meets intention</p>
+    <div class="ornament">
+      <div class="orn-line"></div><div class="orn-dia"></div><div class="orn-line"></div>
+    </div>
+    <div class="cs-pill">Coming Soon</div>
+    <div class="notify-wrap">
+      <p class="notify-label">Be the first to know</p>
+      <div class="form-row" id="form-row">
+        <input type="email" id="email" placeholder="your@email.com" autocomplete="off"/>
+        <button onclick="notify()">Notify Me</button>
+      </div>
+      <p class="form-hint" id="hint">No spam. Only the finest arrivals.</p>
+      <p class="form-success" id="succ">You&rsquo;re on the list &mdash; something extraordinary is on its way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP 1 — Fabrics -->
+<section class="strip-section">
+  <p class="strip-label">Fabrics &amp; Textures</p>
+  <div class="photo-strip">
+    <div class="photo-card c-lg">
+      <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=640&q=80" alt="Linen fabric" loading="lazy"/>
+      <div class="photo-card-label">Raw linen weave</div>
+    </div>
+    <div class="photo-card c-md">
+      <img src="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=500&q=80" alt="Cotton detail" loading="lazy"/>
+      <div class="photo-card-label">Cotton close-up</div>
+    </div>
+    <div class="photo-card c-lg">
+      <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=640&q=80" alt="Fabric rolls" loading="lazy"/>
+      <div class="photo-card-label">Cloth rolls</div>
+    </div>
+    <div class="photo-card c-sm">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Thread detail" loading="lazy"/>
+      <div class="photo-card-label">Thread detail</div>
+    </div>
+    <div class="photo-card c-md">
+      <img src="https://images.unsplash.com/photo-1590739225287-bd31519780c3?w=500&q=80" alt="Natural cloth" loading="lazy"/>
+      <div class="photo-card-label">Natural fiber</div>
+    </div>
+    <div class="photo-card c-lg">
+      <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=640&q=80" alt="Premium fabric" loading="lazy"/>
+      <div class="photo-card-label">Premium weave</div>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL GRID — Collection -->
+<section class="strip-section" style="padding-top:3px">
+  <p class="strip-label">The Collection</p>
+  <div class="editorial">
+    <div class="ed-cell ed-tall">
+      <div class="ed-inner">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4b5ae8?w=700&q=80" alt="Embroidery" loading="lazy"/>
+      </div>
+      <div class="ed-overlay"><p class="ed-title">Embroidered signature</p></div>
+    </div>
+    <div class="ed-cell">
+      <div class="ed-inner">
+        <img src="https://images.unsplash.com/photo-1589310243389-96a5483213a8?w=600&q=80" alt="White shirt" loading="lazy"/>
+      </div>
+      <div class="ed-overlay"><p class="ed-title">Crisp white linen</p></div>
+    </div>
+    <div class="ed-cell">
+      <div class="ed-inner">
+        <img src="https://images.unsplash.com/photo-1602810316498-ab67cf68c8e1?w=600&q=80" alt="T-shirt" loading="lazy"/>
+      </div>
+      <div class="ed-overlay"><p class="ed-title">Essential tee</p></div>
+    </div>
+    <div class="ed-cell">
+      <div class="ed-inner">
+        <img src="https://images.unsplash.com/photo-1620799139507-2a76f79a2f4d?w=600&q=80" alt="Casual shirt" loading="lazy"/>
+      </div>
+      <div class="ed-overlay"><p class="ed-title">Relaxed everyday</p></div>
+    </div>
+    <div class="ed-cell">
+      <div class="ed-inner">
+        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=600&q=80" alt="Embroidery detail" loading="lazy"/>
+      </div>
+      <div class="ed-overlay"><p class="ed-title">Hand embroidery</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP 2 — Shirts -->
+<section class="strip-section" style="padding-top:3px">
+  <p class="strip-label">Shirts &amp; Silhouettes</p>
+  <div class="photo-strip">
+    <div class="photo-card c-md">
+      <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500&q=80" alt="White tee" loading="lazy"/>
+      <div class="photo-card-label">Classic white</div>
+    </div>
+    <div class="photo-card c-lg">
+      <img src="https://images.unsplash.com/photo-1512327536842-5aa37d1ba3e3?w=640&q=80" alt="Shirt style" loading="lazy"/>
+      <div class="photo-card-label">Relaxed silhouette</div>
+    </div>
+    <div class="photo-card c-sm">
+      <img src="https://images.unsplash.com/photo-1559734840-f9509ee5677f?w=400&q=80" alt="Shirt detail" loading="lazy"/>
+      <div class="photo-card-label">Collar craft</div>
+    </div>
+    <div class="photo-card c-lg">
+      <img src="https://images.unsplash.com/photo-1603252109303-2751441dd157?w=640&q=80" alt="Folded shirt" loading="lazy"/>
+      <div class="photo-card-label">Folded precision</div>
+    </div>
+    <div class="photo-card c-md">
+      <img src="https://images.unsplash.com/photo-1578587018452-892bacefd3f2?w=500&q=80" alt="Shirt on hanger" loading="lazy"/>
+      <div class="photo-card-label">Clean drape</div>
+    </div>
+    <div class="photo-card c-sm">
+      <img src="https://images.unsplash.com/photo-1596755389378-c31d21fd1273?w=400&q=80" alt="Button shirt" loading="lazy"/>
+      <div class="photo-card-label">Oxford detail</div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<div class="values">
+  <div class="value">
+    <svg class="value-ico" viewBox="0 0 24 24" fill="none" stroke="#B8996A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2C8 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-4-8-8-8z"/>
+    </svg>
+    <span class="value-name">Craftsmanship</span>
+    <span class="value-desc">Hand-selected fibres</span>
+  </div>
+  <div class="value">
+    <svg class="value-ico" viewBox="0 0 24 24" fill="none" stroke="#B8996A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/>
+    </svg>
+    <span class="value-name">Unique Design</span>
+    <span class="value-desc">Original every piece</span>
+  </div>
+  <div class="value">
+    <svg class="value-ico" viewBox="0 0 24 24" fill="none" stroke="#B8996A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/>
+    </svg>
+    <span class="value-name">Best Material</span>
+    <span class="value-desc">Only finest sources</span>
+  </div>
+  <div class="value">
+    <svg class="value-ico" viewBox="0 0 24 24" fill="none" stroke="#B8996A" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <path d="M3 9h18M9 21V9"/>
+    </svg>
+    <span class="value-name">Timeless</span>
+    <span class="value-desc">Beyond the season</span>
+  </div>
+</div>
+
+<!-- BOTTOM BANNER -->
+<div class="bottom-bar">
+  <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=1400&q=80" alt="Fabric" loading="lazy"/>
+  <div class="bottom-bar-text">
+    <p class="bottom-tagline">Dressed in intention</p>
+    <a href="https://elser.in" class="bottom-url">elser.in</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-txt">&copy; 2026 Elser</span>
+  <div class="foot-dot"></div>
+  <span class="foot-txt">All rights reserved</span>
+</footer>
+
+<div class="side">Fabric &middot; Form &middot; Feel</div>
+
+<script>
+function notify(){
+  const email=document.getElementById('email');
+  const row=document.getElementById('form-row');
+  const hint=document.getElementById('hint');
+  const succ=document.getElementById('succ');
+  if(!email.value.trim()||!email.value.includes('@')){
+    email.style.color='var(--gold)';
+    setTimeout(()=>email.style.color='',600);
+    email.focus();return;
+  }
+  [row,hint].forEach(el=>{
+    el.style.transition='opacity .5s';el.style.opacity='0';
+    setTimeout(()=>el.style.display='none',500);
+  });
+  setTimeout(()=>succ.style.display='block',520);
+}
+document.getElementById('email').addEventListener('keydown',e=>{if(e.key==='Enter')notify()});
+</script>
+</body>
+</html>
