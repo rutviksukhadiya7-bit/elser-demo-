@@ -1,96 +1,155 @@
+
 <?php
 $brand = "ELSER";
 $drop = "DROP 01";
 $status = "SOLD OUT";
-$nextDrop = "DROP 02";
-$year = date("Y");
-
-/*
- * ELSER DROP 01 SOLD OUT PAGE
- * Replace the image URLs below with your own campaign photography when ready.
- */
-$fabrics = [
-    ["https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=900&q=85", "Raw linen weave"],
-    ["https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?w=800&q=85", "Cotton close-up"],
-    ["https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=900&q=85", "The fabric edit"],
-    ["https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85", "Details in texture"],
-    ["https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85", "A considered wardrobe"],
-];
-
-$collection = [
-    ["https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1000&q=85", "Essential tee"],
-    ["https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000&q=85", "Everyday form"],
-    ["https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?w=1000&q=85", "The finishing detail"],
-];
+$nextDrop = "COMING SOON";
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#13161A">
-<meta name="description" content="DROP 01 by ELSER is officially sold out. Thank you for being part of our story. The next chapter is coming soon.">
-<title>ELSER — DROP 01 Sold Out</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Josefin+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+<title>ELSER | Sold Out</title>
+
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --ink:#13161A;--ink2:#1C2027;--shuttle:#5C6673;--shuttle-lt:#8A97A6;
-  --cream:#EEE9DF;--cream-dim:#C8C1B4;--gold:#B8996A;--gold-lt:#D4BFA0;
-  --line:rgba(205,210,216,.1);
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-html{scroll-behavior:smooth}
-body{background:var(--ink);color:var(--cream);font-family:'Cormorant Garamond',Georgia,serif;overflow-x:hidden;min-height:100vh}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");pointer-events:none;z-index:5;opacity:.4}
-nav{position:absolute;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:1.6rem clamp(1.5rem,5vw,4rem);border-bottom:1px solid var(--line);background:rgba(19,22,26,.45);backdrop-filter:blur(14px);animation:fadeDown .9s ease both}
-.nav-brand{font-family:'Josefin Sans',sans-serif;font-weight:200;font-size:.88rem;letter-spacing:.55em;color:var(--cream);text-transform:uppercase}
-.nav-tag{font-family:'Josefin Sans',sans-serif;font-weight:100;font-size:.52rem;letter-spacing:.28em;color:var(--shuttle-lt);text-transform:uppercase}
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem clamp(1.5rem,6vw,5rem) 5rem;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 50% 42%,rgba(92,102,115,.2) 0%,transparent 65%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(184,153,106,.1) 0%,transparent 55%)}
-.hero-content{position:relative;z-index:1;max-width:900px}
-.eyebrow,.section-label,.nav-tag,.nav-brand,.sold-pill,.small-label,.value-name,.foot-txt,.bottom-url{font-family:'Josefin Sans',sans-serif;text-transform:uppercase}
-.eyebrow{font-weight:100;font-size:.55rem;letter-spacing:.44em;color:var(--gold);margin-bottom:2.4rem;animation:fadeUp 1s .3s ease both}
-.brand{font-size:clamp(5.2rem,19vw,14rem);font-weight:300;letter-spacing:.27em;line-height:.88;color:var(--cream);padding-left:.27em;animation:fadeUp 1.1s .45s ease both}
-.brand-ghost{color:transparent;-webkit-text-stroke:1px rgba(184,153,106,.38)}
-.subtitle{font-size:clamp(.95rem,2vw,1.2rem);font-weight:300;font-style:italic;color:var(--shuttle-lt);letter-spacing:.08em;margin-top:1.8rem;animation:fadeUp 1s .6s ease both}
-.ornament{display:flex;align-items:center;gap:1rem;margin:2.4rem auto;width:min(200px,55vw);animation:fadeUp 1s .7s ease both}
-.orn-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(184,153,106,.55),transparent)}
-.orn-dia{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);opacity:.8;flex-shrink:0}
-.sold-pill{display:inline-block;font-weight:200;font-size:.58rem;letter-spacing:.38em;color:var(--gold-lt);border:1px solid rgba(184,153,106,.42);padding:.7rem 2rem;margin-bottom:2rem;animation:fadeUp 1s .8s ease both}
-.hero-copy{max-width:590px;margin:0 auto;color:var(--cream-dim);font-size:clamp(1.05rem,2vw,1.28rem);font-weight:300;line-height:1.8;animation:fadeUp 1s .95s ease both}
-.hero-copy em{color:var(--gold-lt);font-style:italic}
-.hero-note{margin-top:1.7rem;color:var(--shuttle-lt);font-style:italic;font-size:1rem;animation:fadeUp 1s 1.05s ease both}
-.scroll-mark{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-family:'Josefin Sans',sans-serif;font-size:.48rem;letter-spacing:.32em;color:rgba(138,151,166,.55);text-transform:uppercase}
-.scroll-mark::after{content:'';display:block;width:1px;height:32px;background:linear-gradient(var(--gold),transparent);margin:12px auto 0}
-.strip-section{position:relative;z-index:2;border-top:1px solid var(--line)}
-.section-label{font-weight:100;font-size:.56rem;letter-spacing:.36em;color:var(--shuttle-lt);padding:1.8rem clamp(1.5rem,5vw,4rem);opacity:.72}
-.photo-strip{display:flex;gap:3px;overflow-x:auto;scrollbar-width:none;padding:0 3px 3px}
-.photo-strip::-webkit-scrollbar{display:none}
-.photo-card{flex-shrink:0;position:relative;overflow:hidden}
-.photo-card img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.25,.46,.45,.94),filter .9s;filter:saturate(.65) brightness(.78)}
-.photo-card:hover img{transform:scale(1.05);filter:saturate(.88) brightness(.96)}
-.photo-card-label{position:absolute;bottom:0;left:0;right:0;padding:.9rem 1rem;background:linear-gradient(transparent,rgba(13,16,20,.72));font-family:'Josefin Sans',sans-serif;font-weight:100;font-size:.46rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(240,235,225,.78)}
-.c-lg{width:320px;height:430px}.c-md{width:250px;height:430px}.c-sm{width:200px;height:430px}
-.editorial{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:3px 0}
-.ed-cell{position:relative;overflow:hidden;height:390px}
-.ed-cell img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s,filter .9s;filter:saturate(.6) brightness(.78)}
-.ed-cell:hover img{transform:scale(1.04);filter:saturate(.86) brightness(.96)}
-.ed-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:1.4rem;background:linear-gradient(transparent 40%,rgba(13,16,20,.65))}
-.ed-title{font-size:1.1rem;font-weight:300;font-style:italic;color:var(--cream-dim);letter-spacing:.06em}
-.thanks{position:relative;text-align:center;padding:clamp(5rem,10vw,9rem) 1.5rem;background:radial-gradient(ellipse 65% 75% at 50% 50%,rgba(92,102,115,.14),transparent 72%)}
-.thanks-inner{max-width:760px;margin:auto}
-.small-label{font-weight:100;font-size:.54rem;letter-spacing:.4em;color:var(--gold);margin-bottom:1.7rem}
-.thanks h2{font-weight:300;font-size:clamp(2.5rem,7vw,5.2rem);letter-spacing:.06em;line-height:1.05;margin-bottom:1.5rem}
-.thanks h2 em{color:var(--gold-lt);font-weight:300}
-.thanks p{font-size:clamp(1.05rem,2vw,1.25rem);line-height:1.85;color:var(--cream-dim);font-weight:300}
-.thanks .signature{margin-top:2rem;color:var(--gold-lt);font-style:italic;font-size:1.2rem}
-.values{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.value{flex:1;padding:2.5rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.6rem;position:relative}
-.value+.value::before{content:'';position:absolute;left:0;top:22%;bottom:22%;width:1px;background:var(--line)}
-.value-ico{width:20px;height:20px;opacity:.55}
-.value-name{font-weight:200;font-size:.5rem;letter-spacing:.3em;color:var(--cream-dim)}
-.value-desc{font-style:italic;font-size:.82rem;font-weight:300;color:var(--shuttle-lt);text-align:center}
-.next-drop{position:relative;overflow:hidden;min-height:340px;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem;background:linear-gradient(rgba(13,16,20,.72),rgba(13,16,20,.8)),url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1800&q=85') center 42%/cover}
-.next-inner{position:relative;z-index:1}
+
+body {
+    background: #080808;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+}
+
+.logo {
+    font-size: 55px;
+    font-weight: 900;
+    letter-spacing: 12px;
+    margin-bottom: 35px;
+}
+
+.badge {
+    display: inline-block;
+    border: 1px solid #fff;
+    padding: 10px 25px;
+    letter-spacing: 5px;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-size: clamp(48px, 10vw, 85px);
+    font-weight: 900;
+    letter-spacing: 5px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: #aaa;
+    font-size: 18px;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.message {
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding: 30px 10px;
+    line-height: 2;
+    color: #ddd;
+}
+
+.message h2 {
+    color: white;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+.next {
+    margin-top: 40px;
+}
+
+.next h2 {
+    font-size: 27px;
+    letter-spacing: 5px;
+    margin-bottom: 12px;
+}
+
+.next p {
+    color: #888;
+    letter-spacing: 3px;
+}
+
+.footer {
+    margin-top: 55px;
+    font-size: 12px;
+    color: #666;
+    letter-spacing: 3px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="logo"><?php echo $brand; ?></div>
+
+    <div class="badge">
+        <?php echo $drop; ?>
+    </div>
+
+    <h1><?php echo $status; ?></h1>
+
+    <p class="subtitle">
+        You showed up. You made it happen.<br>
+        And we couldn't be more grateful.
+    </p>
+
+    <div class="message">
+        <h2>THANK YOU ❤️</h2>
+
+        Thank you for the incredible response
+        and overwhelming love!
+
+        <br><br>
+
+        Every order, every message, and every
+        bit of support means everything to us.
+
+        <br><br>
+
+        Missed this drop? Don't worry.
+        Something bigger is on its way.
+    </div>
+
+    <div class="next">
+        <h2><?php echo $nextDrop; ?></h2>
+        <p>LIMITED DROPS. UNLIMITED ATTITUDE.</p>
+    </div>
+
+    <div class="footer">
+        &copy; <?php echo date("Y"); ?> ELSER.
+        ALL RIGHTS RESERVED.
+    </div>
+
+</div>
+
+</body>
+</html>
